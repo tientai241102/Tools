@@ -2,12 +2,10 @@ package io.agora.media;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Base64;
-
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.Date;
 import java.util.zip.CRC32;
 
@@ -35,12 +33,12 @@ public class Utils {
     }
 
     public static String base64Encode(byte[] data) {
-        byte[] encodedBytes = Base64.encodeBase64(data);
+        byte[] encodedBytes = Base64.getEncoder().encode(data);
         return new String(encodedBytes);
     }
 
     public static byte[] base64Decode(String data) {
-        return Base64.decodeBase64(data.getBytes());
+        return Base64.getDecoder().decode(data.getBytes());
     }
 
     public static int crc32(String data) {
